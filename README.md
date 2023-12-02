@@ -1,18 +1,23 @@
 # Advent of Code 2023
 
 Welcome to the Advent of Code 2023 repository! This repository contains my solutions for the Advent of Code 2023 puzzles. 
+<pre>
+        <span style="color:gold;">*</span>
+       <span style="color:green;">/</span><span style="color:green;">|</span><span style="color:green;">\</span>
+      <span style="color:green;">/</span> <span style="color:red;">*</span><span style="color:green;">|</span><span style="color:red;">*</span>\<span style="color:green;">\</span>
+     <span style="color:green;">/*</span>|<span style="color:green;">*\</span>
+    <span style="color:green;">/</span> <span style="color:red;">*</span><span style="color:green;">|</span><span style="color:red;">*</span> \<span style="color:green;">\</span>
+   <span style="color:green;">/</span>  <span style="color:red;">*</span><span style="color:green;">|</span><span style="color:red;">*</span>  \<span style="color:green;">\</span>
+  <span style="color:green;">/</span>   <span style="color:red;">*</span><span style="color:green;">|</span><span style="color:red;">*</span>   \<span style="color:green;">\</span>
+ <span style="color:green;">/</span>    <span style="color:red;">*</span><span style="color:green;">|</span><span style="color:red;">*</span>    \<span style="color:green;">\</span>
+<span style="color:brown;">/_____</span><span style="color:green;">*</span><span style="color:brown;">|</span><span style="color:green;">*</span><span style="color:brown;">_____\</span>
+    <span style="color:brown;">|||</span>
 
-        *
-       /|\
-      / | \
-     / *|* \
-    /_* |*_ \
-       |||
+</pre>
 
 ## File Structure
 
 The repository is organized in a simple file structure. The top-level folders are `days` and `lib`. The `lib` folder contains a `File` class and a `helper.hpp` file. The `days` folder contains folders for each day of the challenge (01, 02, 03, etc.). Each day folder contains a `test.txt`, `input.txt`, and a `main.cpp` file.
-
 <pre>
 advent-of-code-2023/ 
 ├── lib/ 
@@ -30,7 +35,7 @@ advent-of-code-2023/
     │ ├── input.txt 
     │ └── main.cpp 
     └── ...
-<\pre>
+</pre>
 
 The test.txt file contains the test data for the corresponding day's puzzle. The input.txt file contains the input data for the puzzle. The main.cpp file contains the solutions code for the puzzles.
 
