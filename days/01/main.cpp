@@ -1,5 +1,5 @@
-#include "../../lib/file.h"
-#include "../../lib/helper.h"
+#include "../../lib/file.hpp"
+#include "../../lib/helper.hpp"
 
 // =================== FILE READING ======================== //
 File myfile("input.txt", "test.txt");
