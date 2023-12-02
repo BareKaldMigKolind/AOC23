@@ -13,6 +13,7 @@ Welcome to the Advent of Code 2023 repository! This repository contains my solut
 
 The repository is organized in a simple file structure. The top-level folders are `days` and `lib`. The `lib` folder contains a `File` class and a `helper.hpp` file. The `days` folder contains folders for each day of the challenge (01, 02, 03, etc.). Each day folder contains a `test.txt`, `input.txt`, and a `main.cpp` file.
 
+<pre>
 advent-of-code-2023/ 
 ├── lib/ 
 │ ├── File.cpp 
@@ -29,6 +30,7 @@ advent-of-code-2023/
     │ ├── input.txt 
     │ └── main.cpp 
     └── ...
+<\pre>
 
 The test.txt file contains the test data for the corresponding day's puzzle. The input.txt file contains the input data for the puzzle. The main.cpp file contains the solutions code for the puzzles.
 
