@@ -2,16 +2,12 @@
 
 Welcome to the Advent of Code 2023 repository! This repository contains my solutions for the Advent of Code 2023 puzzles. 
 <pre>
-        <span style="color:gold;">*</span>
-       <span style="color:green;">/</span><span style="color:green;">|</span><span style="color:green;">\</span>
-      <span style="color:green;">/</span> <span style="color:red;">*</span><span style="color:green;">|</span><span style="color:red;">*</span>\<span style="color:green;">\</span>
-     <span style="color:green;">/*</span>|<span style="color:green;">*\</span>
-    <span style="color:green;">/</span> <span style="color:red;">*</span><span style="color:green;">|</span><span style="color:red;">*</span> \<span style="color:green;">\</span>
-   <span style="color:green;">/</span>  <span style="color:red;">*</span><span style="color:green;">|</span><span style="color:red;">*</span>  \<span style="color:green;">\</span>
-  <span style="color:green;">/</span>   <span style="color:red;">*</span><span style="color:green;">|</span><span style="color:red;">*</span>   \<span style="color:green;">\</span>
- <span style="color:green;">/</span>    <span style="color:red;">*</span><span style="color:green;">|</span><span style="color:red;">*</span>    \<span style="color:green;">\</span>
-<span style="color:brown;">/_____</span><span style="color:green;">*</span><span style="color:brown;">|</span><span style="color:green;">*</span><span style="color:brown;">_____\</span>
-    <span style="color:brown;">|||</span>
+<font color="gold"> *</font>
+<font color="green">   /|\</font>
+<font color="green">  / | \</font>
+<font color="green"> /  |  \</font>
+<font color="green">/___|___\</font>
+<font color="red">    |||</font>
 
 </pre>
 
