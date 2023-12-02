@@ -1,6 +1,6 @@
 # Advent of Code 2023
 
-Welcome to the Advent of Code 2023 repository! This repository contains my solutions for the Advent of Code 2023 puzzles. 
+Welcome to the Advent of Code 2023 repository! This repository contains my solutions for the __Advent of Code 2023__ puzzles. 
 <pre>
         *
        /|\
@@ -37,7 +37,7 @@ advent-of-code-2023/
     └── ...
 </pre>
 
-The test.txt file contains the test data for the corresponding day's puzzle. The input.txt file contains the input data for the puzzle. The main.cpp file contains the solutions code for the puzzles.
+The `test.txt` file contains the test data for the corresponding day's puzzle. The input.txt file contains the input data for the puzzle. The main.cpp file contains the solutions code for the puzzles.
 
 ## Progress
 
