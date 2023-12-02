@@ -6,14 +6,8 @@ Welcome to the Advent of Code 2023 repository! This repository contains my solut
        /|\
       / | \
      / *|* \
-    / * |*  \
-   /  * |*   \
-  /   * |*    \
- /    * |*     \
-/_____* |*_____ \
-      |||||
-
-
+    /_* |*_ \
+       |||
 
 ## File Structure
 
