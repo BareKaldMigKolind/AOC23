@@ -1,14 +1,19 @@
 # Advent of Code 2023
 
 Welcome to the Advent of Code 2023 repository! This repository contains my solutions for the Advent of Code 2023 puzzles. 
+<pre>
+        *
+       /|\
+      / | \
+     /* | *\
+    /  *|*  \
+   / *  |  * \
+  / *  *|*  * \
+ / *  * | *  * \
+/*__*__*|*__*__*\
+    |||||||
 
-<font color="gold"> *</font>
-<font color="green">   /|\</font>
-<font color="green">  / | \</font>
-<font color="green"> /  |  \</font>
-<font color="green">/___|___\</font>
-<font color="red">    |||</font>
-
+</pre>
 
 ## File Structure
 
