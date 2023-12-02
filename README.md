@@ -1,7 +1,7 @@
 # Advent of Code 2023
 
 Welcome to the Advent of Code 2023 repository! This repository contains my solutions for the Advent of Code 2023 puzzles. 
-<pre>
+
 <font color="gold"> *</font>
 <font color="green">   /|\</font>
 <font color="green">  / | \</font>
@@ -9,7 +9,6 @@ Welcome to the Advent of Code 2023 repository! This repository contains my solut
 <font color="green">/___|___\</font>
 <font color="red">    |||</font>
 
-</pre>
 
 ## File Structure
 
