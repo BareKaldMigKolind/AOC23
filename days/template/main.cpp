@@ -4,7 +4,7 @@
 // =================== FILE READING ======================== //
 File myfile("input.txt", "test.txt");
 std::vector<std::string> lines = myfile.file_to_vector<std::string>(false);
-int n = lines[0].length();
+int numberOfLines = lines.size();
 // ======================================================== //
 
 

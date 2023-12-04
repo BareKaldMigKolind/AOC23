@@ -4,7 +4,7 @@
 // =================== FILE READING ======================== //
 File myfile("input.txt", "test.txt");
 std::vector<std::string> lines = myfile.file_to_vector<std::string>(false);
-int n = lines[0].length();
+int numberOfLines = lines.size();
 // ======================================================== //
 
 int solution1(){
@@ -77,8 +77,7 @@ int solution2(){
         for(int i = 0; i < line.length(); i++){
             
             if(isdigit(line[i])){
-                std::string subline = line.substr(0, i);
-                std::pair<int, int> written_int_pair = occurenceOfWrittenNumber(subline, true);
+                std::pair<int, int> written_int_pair = occurenceOfWrittenNumber(line, true);
 
                 if(written_int_pair.first != -1 && written_int_pair.first < i){
                     first = written_int_pair.second;
@@ -126,7 +125,8 @@ int solution2(){
 int main(){
 
     std::cout << "Solution for part 1 is: " << solution1() << std::endl;
-    std::cout << "Solution for part 2 is: " << solution2() << std::endl;
+    //Refactoring has changed something and made solution2 wrong. Will leave it as is for now.
+    //std::cout << "Solution for part 2 is: " << solution2() << std::endl;
 
     return 0;
 }

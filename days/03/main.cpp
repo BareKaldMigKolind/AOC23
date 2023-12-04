@@ -4,7 +4,7 @@
 // =================== FILE READING ======================== //
 File myfile("input.txt", "test.txt");
 std::vector<std::string> lines = myfile.file_to_vector<std::string>(false);
-int n = lines.size();
+int numberOfLines = lines.size();
 // ======================================================== //
 
 bool isSymbol(char c){
@@ -21,7 +21,7 @@ bool isGear(char c){
     return false;
 }
 
-int getStartIndex(std::vector<std::string> lines, int line, int index){
+int getStartIndex(std::vector<std::string>& lines, int line, int index){
     int startIndex;
     while(isdigit(lines[line][index])){
         startIndex = index;
@@ -158,11 +158,10 @@ int solution1(){
     int sum = 0;
     std::vector<std::string> firstlines = lines;
 
-    for (int i = 0; i < n; i++){ 
+    for (int i = 0; i < numberOfLines; i++){ 
         for (int j = 0; j < firstlines[i].length(); j++){
             if(isSymbol(firstlines[i][j])){
-                int adjacentSum = getAdjacentSum(firstlines, i, j);
-                sum += adjacentSum;
+                sum += getAdjacentSum(firstlines, i, j);
             }
         }
     }
@@ -174,11 +173,10 @@ int solution2(){
     int sum = 0;
     std::vector<std::string> secondlines = lines;
 
-    for (int i = 0; i < n; i++){ 
+    for (int i = 0; i < numberOfLines; i++){ 
         for (int j = 0; j < secondlines[i].length(); j++){
             if(isGear(secondlines[i][j])){
-                int adjacentMul = getAdjacentMul(secondlines, i, j);
-                sum += adjacentMul;
+                sum += getAdjacentMul(secondlines, i, j);
             }
         }
     }

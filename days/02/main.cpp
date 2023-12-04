@@ -4,19 +4,8 @@
 // =================== FILE READING ======================== //
 File myfile("input.txt", "test.txt");
 std::vector<std::string> lines = myfile.file_to_vector<std::string>(false);
-int n = lines[0].length();
+int numberOfLines = lines.size();
 // ======================================================== //
-
-std::vector<std::string> cleanedLines(std::vector<std::string> vec){
-    std::vector<std::string> cleanVector;
-
-    for(auto line : vec){
-        std::vector<std::string> splittedLine = split_on_char<std::string>(line, ':');
-        cleanVector.push_back(splittedLine[1]);
-    }
-
-    return cleanVector;
-}
 
 std::vector<std::string> colors{"blue", "red", "green"};
 
@@ -74,11 +63,11 @@ int solution1(){
     int red = 12;
     int green = 13;
     int blue = 14;
-    std::vector<std::string> gameLines = cleanedLines(lines);
+    std::vector<std::string> gameLines = cleanedLines(lines, ':');
     std::vector<bool> possibleGames;
 
     // For loop on every line in the game
-    for(int i = 0; i < gameLines.size(); i++){
+    for(int i = 0; i < numberOfLines; i++){
 
         bool lineIsOk = true;
         std::vector<std::string> sets = split_on_char<std::string>(gameLines[i], ';');
@@ -120,12 +109,6 @@ int solution1(){
                         lineIsOk = false;
                         break;
                     }
-
-                // Fejl i getColor. 
-                } else{
-                    if(getColor(draw) == -1){
-                        std::cout << "======\nYou fucked up in getColor\n=======" << std::endl; 
-                    } 
                 }
             }
 
@@ -141,11 +124,11 @@ int solution1(){
 int solution2(){
     int sum = 0;
 
-    std::vector<std::string> gameLines = cleanedLines(lines);
+    std::vector<std::string> gameLines = cleanedLines(lines, ':');
     std::vector<bool> possibleGames;
 
     // For loop on every line in the game
-    for(int i = 0; i < gameLines.size(); i++){
+    for(int i = 0; i < numberOfLines; i++){
         int blue = 0;
         int red = 0;
         int green = 0;
@@ -194,8 +177,8 @@ int solution2(){
 
 int main(){
 
-    std::cout << "Solution for part a: Sum of possible games is "<< solution1() << std::endl;
-    std::cout << "Solution for part b: Sum of power sets: " << solution2() << std::endl;
+    std::cout << "Solution for part a: "<< solution1() << std::endl;
+    std::cout << "Solution for part b: " << solution2() << std::endl;
 
     return 0;
 }

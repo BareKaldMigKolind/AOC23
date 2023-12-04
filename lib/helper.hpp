@@ -61,9 +61,12 @@ std::vector<T> split_on_char(std::string str, char ch) {
    return words;
 }
 
+/// @brief Method to convert a string of numbers seperated by the same char into a vector of int.
+/// @param str The string of ints 
+/// @param seperator The seperator to split on.
+/// @return A int vector with all ints from the string. 
 std::vector<int> stringOfIntsToIntVector(std::string str, char seperator){
     std::vector<std::string> stringVector = split_on_char<std::string>(str, seperator);
-
     std::vector<int> intVector;
 
     for(auto element : stringVector){
@@ -74,6 +77,32 @@ std::vector<int> stringOfIntsToIntVector(std::string str, char seperator){
         }
     }
     return intVector;
+}
+
+/// @brief Often input data starts with "Game 1:" or something like that, this will clean that.
+/// @param vec The vector loaded from file
+/// @param character The char to split the line on. Often ':'
+/// @return A vector where all lines begins after the seperator. 
+std::vector<std::string> cleanedLines(std::vector<std::string> vec, char character){
+    std::vector<std::string> cleanVector;
+
+    for(auto line : vec){
+        std::vector<std::string> splittedLine = split_on_char<std::string>(line, character);
+        cleanVector.push_back(splittedLine[1]);
+    }
+
+    return cleanVector;
+}
+
+/// @brief Sums the values of a vector.
+/// @param vec The int vector to sum over.
+/// @return The sum...
+int sumOfVector(std::vector<int> vec){
+    int sum = 0;
+    for(int value : vec){
+        sum += value;
+    }
+    return sum;
 }
 
 

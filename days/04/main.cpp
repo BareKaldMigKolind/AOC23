@@ -54,14 +54,6 @@ int solution1(){
     return sum;
 }
 
-int sumOfVector(std::vector<int> vec){
-    int sum = 0;
-    for(int value : vec){
-        sum += value;
-    }
-    return sum;
-}
-
 int solution2(){
     int sum = 0;
 
