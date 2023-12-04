@@ -1,6 +1,6 @@
 # Advent of Code 2023
 
-Welcome to the Advent of Code 2023 repository! This repository contains my solutions for the __Advent of Code 2023__ puzzles. 
+Welcome to my Advent of Code 2023 repository! This repository contains my solutions for the __Advent of Code 2023__ puzzles. 
 <pre>
         *
        /|\
