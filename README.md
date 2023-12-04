@@ -37,7 +37,7 @@ advent-of-code-2023/
     └── ...
 </pre>
 
-The `test.txt` file contains the test data for the corresponding day's puzzle. The input.txt file contains the input data for the puzzle. The main.cpp file contains the solutions code for the puzzles.
+The `test.txt` file contains the test data for the corresponding day's puzzle. The `input.txt` file contains the input data for the puzzle. The `main.cpp` file contains the solutions code for the puzzles.
 
 ## Progress
 
