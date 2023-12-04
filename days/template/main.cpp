@@ -7,7 +7,10 @@ std::vector<std::string> lines = myfile.file_to_vector<std::string>(false);
 int n = lines[0].length();
 // ======================================================== //
 
+
 int solution1(){
+    
+
 
     return 0;
 }

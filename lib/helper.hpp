@@ -61,6 +61,21 @@ std::vector<T> split_on_char(std::string str, char ch) {
    return words;
 }
 
+std::vector<int> stringOfIntsToIntVector(std::string str, char seperator){
+    std::vector<std::string> stringVector = split_on_char<std::string>(str, seperator);
+
+    std::vector<int> intVector;
+
+    for(auto element : stringVector){
+        if(element.length() == 0){
+            continue;
+        } else{
+            intVector.push_back(stringToInt(element));
+        }
+    }
+    return intVector;
+}
+
 
 
 
