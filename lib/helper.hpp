@@ -5,6 +5,7 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
+#include <numeric>
 
 /// @brief Prints a vector of Type T
 /// @tparam T Ideally is either int or String.
@@ -148,6 +149,17 @@ int64_t concatenateVector(std::vector<int64_t>& vec) {
    }
 
    return std::stoll(runningStr);
+}
+
+/// @brief Calculates the LEAST COMMON MULTIPLIER
+/// @param numbers A vector of inters, that you want LCM for
+/// @return The LCM of the ints from the vector
+int64_t calculateLCM(std::vector<int> numbers) {
+   int64_t lcm = numbers[0];
+   for(int i = 1; i < numbers.size(); i++) {
+       lcm = std::lcm(lcm, numbers[i]);
+   }
+   return lcm;
 }
 
 

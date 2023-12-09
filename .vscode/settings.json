@@ -54,6 +54,10 @@
         "optional": "cpp",
         "map": "cpp",
         "xtree": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "deque": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "stack": "cpp"
     }
 }
