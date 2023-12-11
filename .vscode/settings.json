@@ -59,6 +59,10 @@
         "ranges": "cpp",
         "span": "cpp",
         "stack": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "iomanip": "cpp",
+        "queue": "cpp",
+        "xlocmon": "cpp",
+        "xloctime": "cpp"
     }
 }
