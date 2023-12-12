@@ -37,9 +37,9 @@ void setMap(){
 }
 
 bool isLegal (int x, int y, char direction){
-    if(direction == 'n' && (lines[y+1][x] == '|' || lines[y+1][x] == '7' || lines[y+1][x] == 'F')){
+    if(y != 0 && (direction == 'n' && (lines[y-1][x] == '|' || lines[y-1][x] == '7' || lines[y-1][x] == 'F'))){
         return true;
-    } else if(direction == 's' && (lines[y-1][x] == '|' || lines[y-1][x] == 'L' || lines[y-1][x] == 'J')){
+    } else if(y != numberOfLines && (direction == 's' && (lines[y+1][x] == '|' || lines[y+1][x] == 'L' || lines[y+1][x] == 'J'))){
         return true;
     } else if(direction == 'e' && (lines[y][x + 1] == '-' || lines[y][x + 1] == '7' || lines[y][x + 1] == 'J')){
         return true;
@@ -51,13 +51,10 @@ bool isLegal (int x, int y, char direction){
 }
 
 char getOpposite(char ch){
-    if(ch == 'n') return 's';
-    if(ch == 's') return 'n';
-    if(ch == 'w') return 'e';
-    if(ch == 'e') return 'w';
-
-    //std::cout << "GETOPPOSITE IS WRONG" << std::endl;
-    return 'M';
+    if(ch == 'n')   return 's';
+    if(ch == 's')   return 'n';
+    if(ch == 'w')   return 'e';
+    else            return 'w';
 }
 
 std::pair<int, int> getNextStep(char ch){
@@ -70,12 +67,9 @@ std::pair<int, int> getNextStep(char ch){
     if(ch == 'e'){
         return std::make_pair(1, 0);
     }
-    if(ch == 'w'){
+    else {
         return std::make_pair(-1, 0);
     }
-    
-    //std::cout << "getNextStep is shit" << std::endl;
-    return std::make_pair(-1000, -1000);
 }
 
 void move(int x, int y, char cameFrom, int& steps){
@@ -83,66 +77,59 @@ void move(int x, int y, char cameFrom, int& steps){
     steps++;
 
     if(x == startPos.first && y == startPos.second){
-        //std::cout << "At position (" << x << ";" << y << ") is the char: " << lines[y][x] << std::endl;
         return;
     }
 
     char ch = lines[y][x];
-    //std::cout << "At Position: (" << x << ";" << y << ") is the char: " << ch << std::endl;
     std::pair<char, char> pipe = movement[ch];
-    //std::cout << "This means movement is between: " << pipe.first << " and " << pipe.second << std::endl;
-    //std::cout << "As I came from " << cameFrom << std::endl;
 
     if(cameFrom == pipe.first){
         std::pair nextStep = getNextStep(pipe.second);
-        //std::cout << "Next step says go to: " << nextStep.first + x << ";" << nextStep.second + y<< std::endl;
         move(nextStep.first + x, nextStep.second + y, getOpposite(pipe.second), steps);
     } else if(cameFrom == pipe.second){
         std::pair nextStep = getNextStep(pipe.first);
-        //std::cout << "=Next Step says move: " << nextStep.first << ";" << nextStep.second << std::endl;
         move(nextStep.first + x, nextStep.second + y, getOpposite(pipe.first), steps);
     } else {
-       //std::cout << "This goes bad.. \nAt position: " << x << ";" << y << ") is the char: " << lines[y][x] << std::endl;
+       std::cout << "This goes bad.. \nAt position: " << x << ";" << y << ") is the char: " << lines[y][x] << std::endl;
     }
-
 }
 
 char getOverwriteChar(char ch){
-    if (ch == 'F' || ch == '7' || ch == 'J' || ch == 'L' ) {
-        return 'X';
+    if(ch == 'L' || ch == 'F'){
+        return 'H';
+    } else if(ch == '7' || ch == 'J'){
+        return 'V';
+    } else if(ch == '-'){
+        return '_';
+    } else if(ch == '|'){
+        return 'I';
+    } else if(ch == 'S'){
+        return 'S';
     } else {
-        return '0';
+        return ch;
     }
+    
 }
 
 void overwriteChar(int x, int y, char cameFrom){
-
     if(x == startPos.first && y == startPos.second){
-        //std::cout << "At position (" << x << ";" << y << ") is the char: " << lines[y][x] << std::endl;
         return;
     }
 
     char ch = lines[y][x];
-    //std::cout << "At Position: (" << x << ";" << y << ") is the char: " << ch << std::endl;
     std::pair<char, char> pipe = movement[ch];
-    //std::cout << "This means movement is between: " << pipe.first << " and " << pipe.second << std::endl;
-    //std::cout << "As I came from " << cameFrom << std::endl;
-    lines[y][x] = getOverwriteChar(ch);
+    lines[y][x] =  getOverwriteChar(ch);
 
     if(cameFrom == pipe.first){
         std::pair nextStep = getNextStep(pipe.second);
-        //std::cout << "Next step says go to: " << nextStep.first + x << ";" << nextStep.second + y<< std::endl;
         overwriteChar(nextStep.first + x, nextStep.second + y, getOpposite(pipe.second));
     } else if(cameFrom == pipe.second){
         std::pair nextStep = getNextStep(pipe.first);
-        //std::cout << "=Next Step says move: " << nextStep.first << ";" << nextStep.second << std::endl;
         overwriteChar(nextStep.first + x, nextStep.second + y, getOpposite(pipe.first));
     } else {
-       //std::cout << "This goes bad.. \nAt position: " << x << ";" << y << ") is the char: " << lines[y][x] << std::endl;
+       std::cout << "This goes bad.. \nAt position: " << x << ";" << y << ") is the char: " << lines[y][x] << std::endl;
     }
-
 }
-
 
 int solution1(){
     setMap();
@@ -154,76 +141,94 @@ int solution1(){
 
 
     if(isLegal(x,y,'n') && y != 0){
-        move(x, y, 's', steps);
-    } else if(isLegal(x, y, 's' && y != numberOfLines - 1)){
-        move(x, y, 'n',steps);
-    } else if(isLegal(x, y, 'e' && x != lines[0].length())){
-        move(x, y, 'w',steps);
-    } else if(isLegal(x, y, 'w' && x != 0)){
-        move(x, y, 'e',steps);
+       move(x, y - 1, 's', steps);
+    } else if(isLegal(x, y, 's') && y != numberOfLines - 1){
+       move(x, y + 1, 'n',steps);
+    } else if(isLegal(x, y, 'e') && x != lines[0].length()){
+       move(x + 1, y, 'w',steps);
+    } else if(isLegal(x, y, 'w') && x != 0){
+       move(x - 1, y, 'e',steps);
     } else {
-        std::cout << "At pos: (" << x << ";" << y << ") something went wrong" << std::endl;
+       std::cout << "At pos: (" << x << ";" << y << ") something went wrong" << std::endl;
     }
 
     return steps / 2;
 }
 
-bool oddNumberOfZero(int X, int Y, char ch){
+bool oddNumberOfLines(int X, int Y, char ch){
     int count = 0;
     int corners = 0;
-    //std::cout << lines[Y][X] << std::endl;
+    bool checkThisOne = false;
+    char cornerChar = 'q';
+
+// THIS IS SOME GOOD USE OF IF
     if(ch == 'n'){
-        for(int i = Y; i > 0; i--){
-            if(lines[i][X] == '0'){
-                corners++;
-            }
-            if(lines[i][X] == '0'){
+        for(int i = Y - 1; i >= 0; i--){
+            if(lines[i][X] == '_'){
                 count++;
+            } else if(lines[i][X] == 'H'){
+                if(cornerChar == 'H'){
+                    cornerChar = 'q';
+                } else if(cornerChar == 'V'){
+                    count++;
+                    cornerChar = 'q';
+                } else{
+                    cornerChar = 'H';
+                }
+                continue;
+            } else if(lines[i][X] == 'V'){
+                if(cornerChar == 'V'){
+                    cornerChar = 'q';
+                } else if(cornerChar == 'H'){
+                    count++;
+                    cornerChar = 'q';
+                } else{
+                    cornerChar = 'V';
+                }
+                continue;
             }
         }
     }
+
     if(ch == 's'){
-        for(int i = Y; i < numberOfLines; i++){
-            if(lines[i][X] == '0'){
-                corners++;
-            }
-            if(lines[i][X] == '0'){
+        for(int i = Y + 1; i > numberOfLines; i++){
+            if(lines[i][X] == '_'){
                 count++;
+            } else if(lines[i][X] == 'H'){
+                if(cornerChar == 'H'){
+                    cornerChar = 'q';
+                } else if(cornerChar == 'V'){
+                    count++;
+                    cornerChar = 'q';
+                } else{
+                    cornerChar = 'H';
+                }
+            } else if(lines[i][X] == 'V'){
+                if(cornerChar == 'V'){
+                    cornerChar = 'q';
+                } else if(cornerChar == 'H'){
+                    count++;
+                    cornerChar = 'q';
+                } else{
+                    cornerChar = 'V';
+                }
             }
         }
     }
-    if(ch == 'e'){
-        for(int i = X; i < lines[Y].length(); i++){
-            if(lines[Y][i] == '0'){
-                corners++;
-            }
-            if(lines[Y][i] == '0'){
-                count++;
-            }
-        }
-    }
-    if(ch == 'w'){
-        for(int i = X; i < 0; i--){
-            if(lines[Y][i] == '0'){
-                corners++;
-            }
-            if(lines[Y][i] == '0'){
-                count++;
-            }
-        }
-    }
-    if(corners != 0) return corners % 2 == 1;
+
     return count % 2 == 1;
 }
 
 bool isInside(int X, int Y){
-    if(oddNumberOfZero(X,Y, 'n') 
-    && oddNumberOfZero(X,Y, 's') 
-    && oddNumberOfZero(X,Y, 'e') 
-    && oddNumberOfZero(X,Y, 'w')) return true;
-
+    if(oddNumberOfLines(X,Y, 'n') || oddNumberOfLines(X,Y, 's')) return true;
     return false;
 }
+
+bool isPipe(char ch){
+    if(ch == 'H' || ch == 'V' || ch == 'I' || ch == '_') return true;
+    return false;
+}
+
 
 int solution2(){
     setMap();
@@ -231,53 +236,35 @@ int solution2(){
     int x = startPos.first;
     int y = startPos.second;
 
-    std::cout << x << y << std::endl;
-
     if(isLegal(x,y,'n')){
-        //std::cout << "n" << std::endl;
-        overwriteChar(x, y - 1, 's');
+        lines[y][x] = 'V';
+        overwriteChar(x, y-1, 's');
     } else if(isLegal(x, y, 's')){
-        //std::cout << "s" << std::endl;
-        overwriteChar(x, y-1, 'n');
+        lines[y][x] = 'V';
+        overwriteChar(x, y + 1, 'n');
     } else if(isLegal(x, y, 'e')){
-        //std::cout << "s" << std::endl;
-        overwriteChar(x + 1, y, 'w');
+        overwriteChar(x+1, y, 'w');
     } else if(isLegal(x, y, 'w')){
-        //std::cout << "s" << std::endl;
-        overwriteChar(x - 1, y, 'e');
-    } else {
-        //std::cout << "At pos: (" << x << ";" << y << ") something went wrong" << std::endl;
+        overwriteChar(x-1, y, 'e');
     }
-
-
 
     int count = 0;
 
-    print_vector<std::string>(lines, "Lines");
-
-
    for(int Y = 0; Y < numberOfLines; Y++){
-    for(int X = 0; X < lines[0].length(); X++){
-        //std::cout << "HEP" << std::endl;
-        if(isInside(X, Y)){
-            std::cout << "Found a 0 at (" << X << ";" << Y << ")" << std::endl;
-            count++;
-        } 
-    } 
-   }
+        for(int X = 0; X < lines[0].length(); X++){
+            char ch = lines[Y][X];
+            if(isPipe(ch)) continue;
 
+            if(isInside(X, Y)) count++; 
+        } 
+   }
     return count;
 }
 
-
-
-
-
-
 int main(){
 
-    std::cout << "Solution for part a: \n" << solution1() << std::endl;
-    //std::cout << "Solution for part b: " << solution2() << std::endl;
+    std::cout << "Solution for part a: " << solution1() << std::endl;
+    std::cout << "Solution for part b: " << solution2() << std::endl;
 
     return 0;
 }
