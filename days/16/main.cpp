@@ -147,10 +147,6 @@ int solution2(){
     std::queue<Beam> q;
     std::unordered_map<std::pair<int, int>,std::string, CoordHash> map;
 
-    int x = 0;
-    int y = 0;
-    char direc;
-
     int mapSize = 0;
 
     for(int i = 0; i <= yMax; i++){
